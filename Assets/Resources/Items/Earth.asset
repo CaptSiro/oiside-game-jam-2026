@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67280daacc33cf34798da722652a390e, type: 3}
   m_Name: Earth
   m_EditorClassIdentifier: 
-  isInfinite: 0
-  sourceObject1: {fileID: 0}
-  sourceObject2: {fileID: 0}
+  itemType: 2
+  isInfinite: 1
+  sourceObject1: 2
+  sourceObject2: 2
