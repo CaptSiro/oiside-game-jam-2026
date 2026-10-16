@@ -1,0 +1,1 @@
+﻿Player - hazmat suit, also infected
