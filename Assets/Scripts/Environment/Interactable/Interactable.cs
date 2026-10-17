@@ -8,7 +8,8 @@ namespace Environment.Interactable
         {
             NewItem,
             NPC,
-            Puzzle
+            Puzzle,
+            BookPickUp
         }
 
         [SerializeField] private InteractableTypeEnum interactableType;

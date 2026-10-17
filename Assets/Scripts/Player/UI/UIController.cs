@@ -39,6 +39,11 @@ namespace Player.UI
                 currentWindow = -1;
             }
         }
+
+        public void ShowBook()
+        {
+            UIWindows[0].gameObject.SetActive(true);
+        }
         
         
     }

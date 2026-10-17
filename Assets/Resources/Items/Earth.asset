@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Earth
   m_EditorClassIdentifier: 
   itemType: 2
-  isInfinite: 1
-  categories: 01000000i
+  categories: 0100000002000000i
   sourceObject1: 2
   sourceObject2: 2

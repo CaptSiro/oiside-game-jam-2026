@@ -10,6 +10,7 @@ namespace Environment.Interactable
     {
         [SerializeField] private EntitySO entity;
         [SerializeField] private SpriteRenderer spriteRenderer;
+        [SerializeField] private Collider2D collider;
         
         public EntitySO Entity => entity;
         private int EntityAnimationIndex = 0;
@@ -42,6 +43,11 @@ namespace Environment.Interactable
         public void UpdateName(string newName)
         {
             entity.name = newName;
+        }
+
+        public void TurnOffCollider()
+        {
+            collider.enabled = false;
         }
     }
 }

@@ -15,6 +15,11 @@ namespace Player
         {
             return UnlockedItems;
         }
+
+        public ItemSO GetCraftingResult(string key)
+        {
+            return craftingResultLookUp.GetValueOrDefault(key);
+        }
         
         private void Awake()
         {

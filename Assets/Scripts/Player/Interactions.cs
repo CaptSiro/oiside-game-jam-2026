@@ -19,13 +19,22 @@ namespace Player
         
         
         private Interactable interactionObject;
+        private bool hasBook = false;
         
         public void OnCollisionEnter2D(Collision2D other)
         {
             if (other.gameObject.layer == LayerMask.NameToLayer("Interactable"))
             {
-                interactionKeyBind.SetActive(true);
                 interactionObject = other.gameObject.GetComponent<Interactable>();
+                if (hasBook || interactionObject.InteractableType == Interactable.InteractableTypeEnum.BookPickUp)
+                {
+                    interactionKeyBind.SetActive(true);
+                }
+                else
+                {
+                    interactionObject = null;
+                }
+                
             }
         }
 
@@ -51,14 +60,20 @@ namespace Player
                     case Interactable.InteractableTypeEnum.Puzzle:
                         EntityInteract();
                         break;
+                    
+                    case Interactable.InteractableTypeEnum.BookPickUp:
+                        hasBook = true;
+                        uiController.ShowBook();
+                        Destroy(interactionObject.gameObject);
+                        break;
                 }
             }
         }
         
         private void NewItemHandling()
         {
-            crafting.UnlockNewItem(((ItemPickUp)interactionObject).Item);
-            Destroy(interactionObject.gameObject);
+            crafting.UnlockNewItem(((ItemPickUp)interactionObject).PickUp());
+            
         }
 
         private void EntityInteract()
