@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67280daacc33cf34798da722652a390e, type: 3}
   m_Name: Glasses
   m_EditorClassIdentifier: Assembly-CSharp::ScriptableObjects.ItemSO
-  itemType: 0
+  itemType: 4
+  canBeCrafted: 1
   categories: 
-  sourceObject1: 0
-  sourceObject2: 0
+  sourceObject1: 3
+  sourceObject2: 3

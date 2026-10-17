@@ -14,7 +14,8 @@ namespace ScriptableObjects
             ChangeSprite,
             UnlockNewItem,
             ChangeName,
-            TurnOffColider
+            TurnOffCollider,
+            KillPlayer,
             
         }
 

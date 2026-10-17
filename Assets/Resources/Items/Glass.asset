@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Glass
   m_EditorClassIdentifier: Assembly-CSharp::ScriptableObjects.ItemSO
   itemType: 3
+  canBeCrafted: 1
   categories: 02000000i
   sourceObject1: 1
   sourceObject2: 2

@@ -6,6 +6,7 @@ namespace Player.UI
     {
         
         [SerializeField] private UIWindow[] UIWindows;
+        [SerializeField] private GameObject endScreen;
 
         private int currentWindow = -1;
 
@@ -43,6 +44,11 @@ namespace Player.UI
         public void ShowBook()
         {
             UIWindows[0].gameObject.SetActive(true);
+        }
+
+        public void ShowEndScreen()
+        {
+            endScreen.SetActive(true);
         }
         
         

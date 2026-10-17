@@ -18,11 +18,15 @@ namespace Environment.Interactable
         private void Awake()
         {
             entity = Instantiate(entity);
-            spriteRenderer.sprite = entity.sprites[0];
-            if (entity.sprites.Length > 1)
+            if (interactableType != InteractableTypeEnum.Clue)
             {
-                StartCoroutine(AnimateEntity());
+                spriteRenderer.sprite = entity.sprites[0];
+                if (entity.sprites.Length > 1)
+                {
+                    StartCoroutine(AnimateEntity());
+                }
             }
+
         }
 
         private IEnumerator AnimateEntity()
@@ -38,6 +42,7 @@ namespace Environment.Interactable
         public void UpdateSprites(Sprite[] sprites)
         {
             entity.sprites = sprites;
+            spriteRenderer.sprite = entity.sprites[0];
         }
 
         public void UpdateName(string newName)

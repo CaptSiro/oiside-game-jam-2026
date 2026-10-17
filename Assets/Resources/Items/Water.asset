@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Water
   m_EditorClassIdentifier: 
   itemType: 0
-  isInfinite: 1
+  canBeCrafted: 0
   categories: 01000000i
   sourceObject1: 0
   sourceObject2: 0

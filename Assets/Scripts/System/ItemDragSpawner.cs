@@ -17,6 +17,7 @@ namespace System
 
         public ItemSO GetItem()
         {
+            Destroy(draggedItem.gameObject);
             return item;
         }
         
@@ -54,9 +55,11 @@ namespace System
 
         public void OnEndDrag(PointerEventData eventData)
         {
+            Debug.Log("on end");
             if (draggedItem == null)
+            {
                 return;
-            
+            }
             Destroy(draggedItem.gameObject);
 
             draggedItem = null;

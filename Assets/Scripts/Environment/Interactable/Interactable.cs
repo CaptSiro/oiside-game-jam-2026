@@ -9,10 +9,11 @@ namespace Environment.Interactable
             NewItem,
             NPC,
             Puzzle,
-            BookPickUp
+            BookPickUp,
+            Clue
         }
 
-        [SerializeField] private InteractableTypeEnum interactableType;
+        [SerializeField] protected InteractableTypeEnum interactableType;
 
         public InteractableTypeEnum InteractableType => interactableType;
     }
