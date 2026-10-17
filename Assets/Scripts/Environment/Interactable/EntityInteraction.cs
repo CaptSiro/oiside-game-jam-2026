@@ -16,6 +16,7 @@ namespace Environment.Interactable
 
         private void Awake()
         {
+            entity = Instantiate(entity);
             spriteRenderer.sprite = entity.sprites[0];
             if (entity.sprites.Length > 1)
             {
@@ -31,6 +32,16 @@ namespace Environment.Interactable
                 yield return new WaitForSeconds(0.125f);
                 EntityAnimationIndex++;
             }
+        }
+
+        public void UpdateSprites(Sprite[] sprites)
+        {
+            entity.sprites = sprites;
+        }
+
+        public void UpdateName(string newName)
+        {
+            entity.name = newName;
         }
     }
 }

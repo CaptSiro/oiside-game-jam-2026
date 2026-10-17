@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 2
   isInfinite: 1
+  categories: 01000000i
   sourceObject1: 2
   sourceObject2: 2

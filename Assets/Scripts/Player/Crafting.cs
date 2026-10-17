@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using ScriptableObjects;
 using UnityEngine;
 
@@ -32,6 +33,11 @@ namespace Player
 
         public void UnlockNewItem(ItemSO item)
         {
+            if (UnlockedItems.Any(t => item == t))
+            {
+                return;
+            }
+
             UnlockedItems.Add(item);
         }
     }

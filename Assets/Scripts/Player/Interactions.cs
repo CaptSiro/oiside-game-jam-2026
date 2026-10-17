@@ -64,7 +64,7 @@ namespace Player
         private void EntityInteract()
         {
             InteractionWindow intWin = (InteractionWindow)uiController.OpenWindow(1);
-            intWin.SetEntity(((EntityInteraction)interactionObject).Entity);
+            intWin.SetEntity(((EntityInteraction)interactionObject).Entity, (EntityInteraction)interactionObject);
         }
     }
     

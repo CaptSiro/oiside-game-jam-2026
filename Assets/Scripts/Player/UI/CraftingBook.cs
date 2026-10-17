@@ -9,6 +9,7 @@ namespace Player.UI
     public class CraftingBook : UIWindow
     {
         [SerializeField] private Crafting crafting;
+        [SerializeField] private RectTransform dragLayer;
         [SerializeField] private ItemButton itemButtonPrefab;
         [SerializeField] private Transform itemHolder;
         [SerializeField] private int buttonsPerPage;
@@ -27,6 +28,7 @@ namespace Player.UI
             {
                 ItemButton itemButton = Instantiate(itemButtonPrefab, itemHolder);
                 itemButton.SetItem(UnlockedItems[i]);
+                itemButton.GetComponent<ItemDragSpawner>().SetDragLayer(dragLayer);
                 itemButtons.Add(itemButton);
             }
             lastShowAmount = UnlockedItems.Count;

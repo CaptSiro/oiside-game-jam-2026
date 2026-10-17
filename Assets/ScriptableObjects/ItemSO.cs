@@ -17,6 +17,7 @@ namespace ScriptableObjects
         public enum Category
         {
             Flammable,
+            Extinguisher,
         }
         
         [Header("Properties")]
