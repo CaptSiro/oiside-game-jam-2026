@@ -8,10 +8,12 @@ namespace Player.UI
         [Header("Events")]
         [SerializeField] private UnityEvent onOpen;
         [SerializeField] private UnityEvent onClose;
+
+        private bool isActive = false;
         
         public virtual void ToggleWindow()
         {
-            if (gameObject.activeSelf)
+            if (isActive)
             {
                 onClose?.Invoke();
             }
@@ -19,8 +21,7 @@ namespace Player.UI
             {
                 onOpen?.Invoke();
             }
-            
-            gameObject.SetActive(!gameObject.activeSelf);
+            isActive = !isActive;
         }
     }
 }

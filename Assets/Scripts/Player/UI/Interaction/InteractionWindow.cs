@@ -16,7 +16,7 @@ namespace Player.UI.Interaction
         [SerializeField] private Crafting crafting;
         [SerializeField] private UIController uIController;
         [SerializeField] private Image displayImage;
-        [SerializeField] private TextMeshProUGUI entityNameText;
+        [SerializeField] private TextMeshProUGUI entityNameText, dialogueText;
 
         private EntitySO currentEntity;
         private EntityInteraction currentEntityReference;
@@ -36,6 +36,7 @@ namespace Player.UI.Interaction
             currentEntity = entity;
             displayImage.sprite = entity.sprites[0];
             entitySprites = entity.sprites;
+            dialogueText.text = "";
             entityNameText.text = entity.entityName;
             currentEntityReference = entityObject;
             if (currentEntity.sprites.Length > 1)
@@ -88,11 +89,14 @@ namespace Player.UI.Interaction
             {
                 case EntitySO.ActionType.Destroy:
                     Destroy(currentEntityReference.gameObject);
+                    entityNameText.text = "";
                     uIController.CloseWindow(1);
                     break;
                 
                 case EntitySO.ActionType.UnlockNewItem:
                     crafting.UnlockNewItem((ItemSO)actions.resource[0]);
+                    dialogueText.text = "Unlocked new Item: " + ((ItemSO)actions.resource[0]).itemType.ToString();
+                    craftingBook.UpdateUI();
                     break;
                 
                 case EntitySO.ActionType.ChangeSprite:
@@ -109,6 +113,10 @@ namespace Player.UI.Interaction
                 case EntitySO.ActionType.ChangeName:
                     entityNameText.text = actions.text;
                     currentEntityReference.UpdateName(actions.text);
+                    break;
+                
+                case EntitySO.ActionType.TurnOffColider:
+                    currentEntityReference.TurnOffCollider();
                     break;
                     
             }

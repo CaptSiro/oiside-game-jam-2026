@@ -34,11 +34,15 @@ MonoBehaviour:
     actions:
     - actionType: 1
       resource:
-      - {fileID: -2411557259123736438, guid: a8b85837e6b2904438f384c2be5f6307, type: 3}
+      - {fileID: 1928317588, guid: 40b71d03cec52fa42917a4a8a1940345, type: 3}
       parameter: 0
       text: 
     - actionType: 2
       resource:
       - {fileID: 11400000, guid: 863fb8a1987fb0c4b86c4c529f4240f0, type: 2}
+      parameter: 0
+      text: 
+    - actionType: 4
+      resource: []
       parameter: 0
       text: 

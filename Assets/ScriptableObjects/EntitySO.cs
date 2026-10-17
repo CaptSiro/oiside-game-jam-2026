@@ -13,7 +13,8 @@ namespace ScriptableObjects
             Destroy,
             ChangeSprite,
             UnlockNewItem,
-            ChangeName
+            ChangeName,
+            TurnOffColider
             
         }
 

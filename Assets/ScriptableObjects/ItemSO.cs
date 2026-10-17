@@ -11,19 +11,21 @@ namespace ScriptableObjects
         {
             Water,
             Fire,
-            Earth
+            Earth,
+            Glass,
+            Glasses
         }
 
         public enum Category
         {
             Flammable,
             Extinguisher,
+            Solid
         }
         
         [Header("Properties")]
         public ItemType itemType;
-        public bool isInfinite;
-        public Category[] categories;
+            public Category[] categories;
         
         [Space(10)]
         [Header("Sources")]
