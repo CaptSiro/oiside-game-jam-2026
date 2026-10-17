@@ -1,3 +1,3 @@
 ﻿Player - hazmat suit, mutated
 
-Billy - hostile, almost blind, has a shotgun, needs glasses
+Dr Mengele - hostile, almost blind, has a shotgun, needs glasses, old af
