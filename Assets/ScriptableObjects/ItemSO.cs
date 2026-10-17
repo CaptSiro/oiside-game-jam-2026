@@ -13,10 +13,16 @@ namespace ScriptableObjects
             Fire,
             Earth
         }
+
+        public enum Category
+        {
+            Flammable,
+        }
         
         [Header("Properties")]
         public ItemType itemType;
         public bool isInfinite;
+        public Category[] categories;
         
         [Space(10)]
         [Header("Sources")]

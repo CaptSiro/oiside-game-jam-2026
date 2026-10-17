@@ -185,8 +185,8 @@ TextureImporter:
       name: Lab_3
       rect:
         serializedVersion: 2
-        x: 0
-        y: 16
+        x: 48
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -207,7 +207,7 @@ TextureImporter:
       name: Lab_4
       rect:
         serializedVersion: 2
-        x: 16
+        x: 0
         y: 16
         width: 16
         height: 16
@@ -229,7 +229,7 @@ TextureImporter:
       name: Lab_5
       rect:
         serializedVersion: 2
-        x: 32
+        x: 16
         y: 16
         width: 16
         height: 16
@@ -251,8 +251,8 @@ TextureImporter:
       name: Lab_6
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 32
+        y: 16
         width: 16
         height: 16
       alignment: 0
@@ -273,8 +273,8 @@ TextureImporter:
       name: Lab_7
       rect:
         serializedVersion: 2
-        x: 16
-        y: 0
+        x: 48
+        y: 16
         width: 16
         height: 16
       alignment: 0
@@ -287,6 +287,50 @@ TextureImporter:
       bones: []
       spriteID: 15f5d4457fe6337408f1df5afa4524be
       internalID: -1749910571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lab_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b819703ea57bfe543b60e63b8838f2a3
+      internalID: 84273906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lab_9
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87e77fc37bb51d44e8cf43d39447ff1a
+      internalID: 1400147392
       vertices: []
       indices: 
       edges: []
@@ -313,6 +357,8 @@ TextureImporter:
       Lab_5: 456123370
       Lab_6: -392310914
       Lab_7: -1749910571
+      Lab_8: 84273906
+      Lab_9: 1400147392
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

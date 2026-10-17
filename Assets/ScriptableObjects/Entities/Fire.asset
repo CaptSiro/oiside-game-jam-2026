@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf311786c0a6924478b15c79d5cefbc6, type: 3}
+  m_Name: Fire
+  m_EditorClassIdentifier: 
+  entityName: Dr. Fire
+  sprites:
+  - {fileID: 1098286324429101383, guid: 9e9b192b90589034badefaaba88eb4a5, type: 3}
+  - {fileID: -2064776472, guid: 9e9b192b90589034badefaaba88eb4a5, type: 3}
+  itemActions: []
+  categoryActions: []

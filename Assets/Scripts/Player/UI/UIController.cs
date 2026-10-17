@@ -7,9 +7,9 @@ namespace Player.UI
         
         [SerializeField] private UIWindow[] UIWindows;
 
-        private int currentWindow;
+        private int currentWindow = -1;
 
-        public void OpenWindow(int windowType)
+        public UIWindow OpenWindow(int windowType)
         {
             if (currentWindow != -1 && currentWindow != windowType)
             {
@@ -18,6 +18,17 @@ namespace Player.UI
             
             currentWindow = windowType;
             UIWindows[currentWindow].ToggleWindow();
+            if (currentWindow == -1)
+            {
+                return null;
+            }
+            
+            return UIWindows[currentWindow];
+        }
+
+        public void OpenWindowButton(int windowType)
+        {
+            OpenWindow(windowType);
         }
 
         public void CloseWindow(int windowType)

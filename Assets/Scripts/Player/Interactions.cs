@@ -1,6 +1,8 @@
 using System;
 using Environment;
 using Environment.Interactable;
+using Player.UI;
+using Player.UI.Interaction;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -13,6 +15,7 @@ namespace Player
         [Space(10)]
         [Header("References")]
         [SerializeField] private Crafting crafting;
+        [SerializeField] private UIController uiController;
         
         
         private Interactable interactionObject;
@@ -44,15 +47,24 @@ namespace Player
                     case Interactable.InteractableTypeEnum.NewItem:
                         NewItemHandling();
                         break;
+                    
+                    case Interactable.InteractableTypeEnum.Puzzle:
+                        EntityInteract();
+                        break;
                 }
             }
         }
         
         private void NewItemHandling()
         {
-            Debug.Log("new item");
             crafting.UnlockNewItem(((ItemPickUp)interactionObject).Item);
             Destroy(interactionObject.gameObject);
+        }
+
+        private void EntityInteract()
+        {
+            InteractionWindow intWin = (InteractionWindow)uiController.OpenWindow(1);
+            intWin.SetEntity(((EntityInteraction)interactionObject).Entity);
         }
     }
     
