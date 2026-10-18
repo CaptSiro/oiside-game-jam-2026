@@ -1,3 +1,4 @@
+using Player.UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,6 +9,7 @@ namespace Player
         public Vector2 moveInput;
         
         [SerializeField] private Interactions interactions;
+        [SerializeField] private UIController uiController;
         
         
         public void MovementInput(InputAction.CallbackContext context)
@@ -20,6 +22,14 @@ namespace Player
             if (context.started)
             {
                 interactions.Interact();
+            }
+        }
+
+        public void PauseInput(InputAction.CallbackContext context)
+        {
+            if (context.started)
+            {
+                uiController.TogglePause();
             }
         }
     }

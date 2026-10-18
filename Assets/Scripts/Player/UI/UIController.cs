@@ -7,7 +7,7 @@ namespace Player.UI
     {
         
         [SerializeField] private UIWindow[] UIWindows;
-        [SerializeField] private GameObject endScreen;
+        [SerializeField] private GameObject endScreen, pauseScreen;
 
         private int currentWindow = -1;
 
@@ -56,7 +56,11 @@ namespace Player.UI
         {
             SceneManager.LoadScene("MainMenu");
         }
-        
+
+        public void TogglePause()
+        {
+            pauseScreen.SetActive(!pauseScreen.activeSelf);
+        }
         
     }
 }
