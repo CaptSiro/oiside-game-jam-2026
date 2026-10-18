@@ -11,7 +11,7 @@ namespace System
 
         public void SetItem(ItemSO item)
         {
-            text.text = item.itemType.ToString();
+            text.text = item.itemType.ToDisplayString();
         }
 
         public void UpdatePosition(Vector3 update)

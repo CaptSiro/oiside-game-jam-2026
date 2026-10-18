@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Fire
   m_EditorClassIdentifier: 
   itemType: 1
-  isInfinite: 1
+  canBeCrafted: 0
+  categories: 03000000i
   sourceObject1: 1
   sourceObject2: 1

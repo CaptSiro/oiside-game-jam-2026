@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf311786c0a6924478b15c79d5cefbc6, type: 3}
+  m_Name: DrMengele
+  m_EditorClassIdentifier: Assembly-CSharp::ScriptableObjects.EntitySO
+  entityName: Dr. Mengele
+  sprites:
+  - {fileID: -192188599730103900, guid: a052f87307aad6d428536bf0b6d88b32, type: 3}
+  itemActions:
+  - itemSO: {fileID: 11400000, guid: 4a2a557b52461564d8a08091e0310b6b, type: 2}
+    actions:
+    - actionType: 5
+      resource: []
+      parameter: 0
+      text: Now he sees who you really are.
+  - itemSO: {fileID: 11400000, guid: 863fb8a1987fb0c4b86c4c529f4240f0, type: 2}
+    actions:
+    - actionType: 1
+      resource:
+      - {fileID: 21300000, guid: fb3cad22c5c7d03459f827477e557140, type: 3}
+      parameter: 0
+      text: 
+    - actionType: 4
+      resource:
+      - {fileID: 21300000, guid: fb3cad22c5c7d03459f827477e557140, type: 3}
+      parameter: 0
+      text: 
+  categoryActions:
+  - itemCategory: 3
+    actions:
+    - actionType: 0
+      resource: []
+      parameter: 0
+      text: 

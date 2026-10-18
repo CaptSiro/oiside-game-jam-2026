@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf311786c0a6924478b15c79d5cefbc6, type: 3}
+  m_Name: Computer
+  m_EditorClassIdentifier: Assembly-CSharp::ScriptableObjects.EntitySO
+  entityName: Broken computer
+  sprites:
+  - {fileID: -1928200300737814378, guid: ed9ec7002ef400e4f8bf153b13c8c2b5, type: 3}
+  - {fileID: -1417400593713708136, guid: ed9ec7002ef400e4f8bf153b13c8c2b5, type: 3}
+  - {fileID: -4234159622298737130, guid: ed9ec7002ef400e4f8bf153b13c8c2b5, type: 3}
+  - {fileID: 8648726954729752633, guid: ed9ec7002ef400e4f8bf153b13c8c2b5, type: 3}
+  - {fileID: -8005984628153883616, guid: ed9ec7002ef400e4f8bf153b13c8c2b5, type: 3}
+  - {fileID: -3334455670416319352, guid: ed9ec7002ef400e4f8bf153b13c8c2b5, type: 3}
+  - {fileID: 3752207423680860611, guid: ed9ec7002ef400e4f8bf153b13c8c2b5, type: 3}
+  - {fileID: -2128196322386198037, guid: ed9ec7002ef400e4f8bf153b13c8c2b5, type: 3}
+  - {fileID: -8187445071196928378, guid: ed9ec7002ef400e4f8bf153b13c8c2b5, type: 3}
+  - {fileID: -4546924752322410101, guid: ed9ec7002ef400e4f8bf153b13c8c2b5, type: 3}
+  - {fileID: 7026199070130013610, guid: ed9ec7002ef400e4f8bf153b13c8c2b5, type: 3}
+  - {fileID: -8950467817338105731, guid: ed9ec7002ef400e4f8bf153b13c8c2b5, type: 3}
+  - {fileID: -6334474631638360358, guid: ed9ec7002ef400e4f8bf153b13c8c2b5, type: 3}
+  - {fileID: -556360264089270386, guid: ed9ec7002ef400e4f8bf153b13c8c2b5, type: 3}
+  - {fileID: -1273739156249392808, guid: ed9ec7002ef400e4f8bf153b13c8c2b5, type: 3}
+  itemActions:
+  - itemSO: {fileID: 11400000, guid: d7d18787c750afe47b0a0a43f5da8292, type: 2}
+    actions:
+    - actionType: 1
+      resource:
+      - {fileID: -2880793632816201289, guid: ed9ec7002ef400e4f8bf153b13c8c2b5, type: 3}
+      parameter: 0
+      text: 
+    - actionType: 2
+      resource:
+      - {fileID: 11400000, guid: 73d0d3c713e65d541b0d1d2665752bf8, type: 2}
+      parameter: 0
+      text: 
+  categoryActions:
+  - itemCategory: 3
+    actions:
+    - actionType: 5
+      resource: []
+      parameter: 0
+      text: Thou shalt not attack the computer.

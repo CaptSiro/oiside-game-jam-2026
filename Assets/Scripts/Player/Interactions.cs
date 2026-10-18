@@ -23,9 +23,29 @@ namespace Player
         
         public void OnCollisionEnter2D(Collision2D other)
         {
-            if (other.gameObject.layer == LayerMask.NameToLayer("Interactable"))
+            AddInteractable(other.gameObject);
+        }
+
+        public void OnCollisionExit2D(Collision2D other)
+        {
+            RemoveInteractable(other.gameObject);
+        }
+
+        public void OnTriggerEnter2D(Collider2D other)
+        {
+            AddInteractable(other.gameObject);
+        }
+
+        public void OnTriggerExit2D(Collider2D other)
+        {
+            RemoveInteractable(other.gameObject);
+        }
+
+        private void AddInteractable(GameObject interactable)
+        {
+            if (interactable.layer == LayerMask.NameToLayer("Interactable"))
             {
-                interactionObject = other.gameObject.GetComponent<Interactable>();
+                interactionObject = interactable.gameObject.GetComponent<Interactable>();
                 if (hasBook || interactionObject.InteractableType == Interactable.InteractableTypeEnum.BookPickUp)
                 {
                     interactionKeyBind.SetActive(true);
@@ -36,11 +56,16 @@ namespace Player
                 }
                 
             }
+
+            if (interactable.layer == LayerMask.NameToLayer("End"))
+            {
+                uiController.ShowEndScreen();
+            }
         }
 
-        public void OnCollisionExit2D(Collision2D other)
+        private void RemoveInteractable(GameObject interactable)
         {
-            if (interactionObject != null && other.gameObject == interactionObject.gameObject)
+            if (interactionObject != null && interactable == interactionObject.gameObject)
             {
                 interactionKeyBind.SetActive(false);
                 interactionObject = null;
@@ -66,6 +91,14 @@ namespace Player
                         uiController.ShowBook();
                         Destroy(interactionObject.gameObject);
                         break;
+                    
+                    case Interactable.InteractableTypeEnum.NPC:
+                        EntityInteract();
+                        break;
+                    
+                    case Interactable.InteractableTypeEnum.Clue:
+                        ClueInteract();
+                        break;
                 }
             }
         }
@@ -80,6 +113,13 @@ namespace Player
         {
             InteractionWindow intWin = (InteractionWindow)uiController.OpenWindow(1);
             intWin.SetEntity(((EntityInteraction)interactionObject).Entity, (EntityInteraction)interactionObject);
+        }
+
+        private void ClueInteract()
+        {
+            InteractionWindow intWin = (InteractionWindow)uiController.OpenWindow(1);
+            intWin.SetEntity(((EntityInteraction)interactionObject).Entity, (EntityInteraction)interactionObject);
+            intWin.SetToClue();
         }
     }
     

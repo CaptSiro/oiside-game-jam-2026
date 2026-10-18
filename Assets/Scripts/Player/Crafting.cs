@@ -30,6 +30,7 @@ namespace Player
             for (int i = 0; i < items.Length; i++)
             {
                 ItemSO current = (ItemSO)items[i];
+                if(!current.canBeCrafted) continue;
                 bool oneFirst = (int)current.sourceObject1 < (int)current.sourceObject2;
                 string key = (oneFirst ? current.sourceObject1.ToString() + current.sourceObject2.ToString() : current.sourceObject2.ToString() + current.sourceObject1.ToString());
                 craftingResultLookUp.Add(key, current);

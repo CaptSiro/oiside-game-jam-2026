@@ -54,7 +54,7 @@ namespace Player.UI
             }
             
             page = toShow;
-            nextButton.SetActive(toShow < (itemButtons.Count / buttonsPerPage));
+            nextButton.SetActive(toShow < ((itemButtons.Count-1) / buttonsPerPage));
             prevButton.SetActive(toShow > 0);
         }
 
@@ -81,7 +81,7 @@ namespace Player.UI
         public void SetCraftingSlot(ItemSO item, int slot)
         {
             slotItems[slot] = item;
-            craftingSlotsText[slot].text = item.itemType.ToString();
+            craftingSlotsText[slot].text = item.itemType.ToDisplayString();
 
             if (slotItems[0] != null && slotItems[1] != null)
             {
@@ -90,7 +90,7 @@ namespace Player.UI
                 ItemSO unlockedItem = crafting.GetCraftingResult(key);
                 if (unlockedItem != null)
                 {
-                    craftingSlotsText[2].text = unlockedItem.itemType.ToString();
+                    craftingSlotsText[2].text = unlockedItem.itemType.ToDisplayString();
                     crafting.UnlockNewItem(unlockedItem);
                     StartCoroutine(DelayNewItem());
                 }

@@ -6,6 +6,7 @@ using Environment.Interactable;
 using ScriptableObjects;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Player.UI.Interaction
@@ -17,6 +18,7 @@ namespace Player.UI.Interaction
         [SerializeField] private UIController uIController;
         [SerializeField] private Image displayImage;
         [SerializeField] private TextMeshProUGUI entityNameText, dialogueText;
+        [SerializeField] private GameObject KilledScreen, restartButton, leaveButton;
 
         private EntitySO currentEntity;
         private EntityInteraction currentEntityReference;
@@ -26,8 +28,14 @@ namespace Player.UI.Interaction
         
         public override void ToggleWindow()
         {
+            craftingBook.gameObject.SetActive(true);
             craftingBook.UpdateUI();
             base.ToggleWindow();
+        }
+
+        public void SetToClue()
+        {
+            craftingBook.gameObject.SetActive(false);
         }
 
         public void SetEntity(EntitySO entity, EntityInteraction entityObject)
@@ -90,13 +98,13 @@ namespace Player.UI.Interaction
                 case EntitySO.ActionType.Destroy:
                     Destroy(currentEntityReference.gameObject);
                     entityNameText.text = "";
-                    uIController.CloseWindow(1);
+                    StartCoroutine(DelayClose());
                     break;
                 
                 case EntitySO.ActionType.UnlockNewItem:
                     crafting.UnlockNewItem((ItemSO)actions.resource[0]);
-                    dialogueText.text = "Unlocked new Item: " + ((ItemSO)actions.resource[0]).itemType.ToString();
-                    craftingBook.UpdateUI();
+                    dialogueText.text = "Unlocked new Item: " + ((ItemSO)actions.resource[0]).itemType.ToDisplayString();
+                    //craftingBook.UpdateUI();
                     break;
                 
                 case EntitySO.ActionType.ChangeSprite:
@@ -108,6 +116,7 @@ namespace Player.UI.Interaction
 
                     entitySprites = newSprites;
                     currentEntityReference.UpdateSprites(newSprites);
+                    displayImage.sprite = entitySprites[0];
                     break;
                 
                 case EntitySO.ActionType.ChangeName:
@@ -115,11 +124,30 @@ namespace Player.UI.Interaction
                     currentEntityReference.UpdateName(actions.text);
                     break;
                 
-                case EntitySO.ActionType.TurnOffColider:
+                case EntitySO.ActionType.TurnOffCollider:
                     currentEntityReference.TurnOffCollider();
+                    break;
+                
+                case EntitySO.ActionType.KillPlayer:
+                    restartButton.gameObject.SetActive(true);
+                    leaveButton.gameObject.SetActive(false);
+                    KilledScreen.SetActive(true);
+                    dialogueText.text = actions.text;
+                    craftingBook.gameObject.SetActive(false);
                     break;
                     
             }
+        }
+
+        private IEnumerator DelayClose()
+        {
+            yield return null;
+            uIController.CloseWindow(1);
+        }
+
+        public void Restart()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }

@@ -15,7 +15,7 @@ namespace Player.UI
         public void SetItem(ItemSO item)
         {
             heldItem = item;
-            text.text = heldItem.itemType.ToString();
+            text.text = heldItem.itemType.ToDisplayString();
             dragSpawner.SetItem(item);
         }
     }
