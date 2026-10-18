@@ -47,7 +47,7 @@ namespace Environment.Interactable
 
         public void UpdateName(string newName)
         {
-            entity.name = newName;
+            entity.entityName = newName;
         }
 
         public void TurnOffCollider()

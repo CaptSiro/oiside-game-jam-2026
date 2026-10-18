@@ -16,7 +16,7 @@ namespace ScriptableObjects
             ChangeName,
             TurnOffCollider,
             KillPlayer,
-            
+            SayLine,
         }
 
         [Serializable]
@@ -45,6 +45,7 @@ namespace ScriptableObjects
         
         public string entityName;
         public Sprite[] sprites;
+        public string initialLine;
         
         public ItemActions[] itemActions;
         public CategoryActions[] categoryActions;

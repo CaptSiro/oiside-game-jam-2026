@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Player.UI
 {
@@ -49,6 +50,11 @@ namespace Player.UI
         public void ShowEndScreen()
         {
             endScreen.SetActive(true);
+        }
+
+        public void MainMenu()
+        {
+            SceneManager.LoadScene("MainMenu");
         }
         
         

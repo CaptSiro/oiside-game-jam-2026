@@ -16,15 +16,18 @@ namespace Player.UI.Interaction
         [SerializeField] private CraftingBook craftingBook;
         [SerializeField] private Crafting crafting;
         [SerializeField] private UIController uIController;
-        [SerializeField] private Image displayImage;
-        [SerializeField] private TextMeshProUGUI entityNameText, dialogueText;
+        [SerializeField] private Image displayImage, playerImage;
+        [SerializeField] private TextMeshProUGUI entityNameText, dialogueText, dialogSource;
         [SerializeField] private GameObject KilledScreen, restartButton, leaveButton;
+        [SerializeField] private Sprite[] killedPlayerSprites;
 
         private EntitySO currentEntity;
         private EntityInteraction currentEntityReference;
         private Sprite[] entitySprites;
 
         private int EntityAnimationIndex = 0;
+
+        private Coroutine writeCoroutine, entityAnimationCoroutine;
         
         public override void ToggleWindow()
         {
@@ -44,20 +47,24 @@ namespace Player.UI.Interaction
             currentEntity = entity;
             displayImage.sprite = entity.sprites[0];
             entitySprites = entity.sprites;
-            dialogueText.text = "";
+
+            writeCoroutine = StartCoroutine(WriteDialog(entity.initialLine));
+
+            currentEntity.initialLine = "";
+            
             entityNameText.text = entity.entityName;
             currentEntityReference = entityObject;
             if (currentEntity.sprites.Length > 1)
             {
-                StartCoroutine(AnimateEntity());
+                entityAnimationCoroutine = StartCoroutine(AnimateEntity(displayImage, currentEntity.sprites));
             }
         }
 
-        private IEnumerator AnimateEntity()
+        private IEnumerator AnimateEntity(Image toAnimate, Sprite[] frames)
         {
             while (gameObject.activeSelf)
             {
-                displayImage.sprite = entitySprites[EntityAnimationIndex % currentEntity.sprites.Length];
+                toAnimate.sprite = frames[EntityAnimationIndex % frames.Length];
                 yield return new WaitForSeconds(0.125f);
                 EntityAnimationIndex++;
             }
@@ -102,9 +109,11 @@ namespace Player.UI.Interaction
                     break;
                 
                 case EntitySO.ActionType.UnlockNewItem:
+                    SoundManager.instance.PlaySound(SoundManager.Sound.correct, transform.position);
                     crafting.UnlockNewItem((ItemSO)actions.resource[0]);
+                    dialogSource.text = "";
                     dialogueText.text = "Unlocked new Item: " + ((ItemSO)actions.resource[0]).itemType.ToDisplayString();
-                    //craftingBook.UpdateUI();
+                    craftingBook.UpdateUI();
                     break;
                 
                 case EntitySO.ActionType.ChangeSprite:
@@ -117,6 +126,8 @@ namespace Player.UI.Interaction
                     entitySprites = newSprites;
                     currentEntityReference.UpdateSprites(newSprites);
                     displayImage.sprite = entitySprites[0];
+                    StopCoroutine(entityAnimationCoroutine);
+                    entityAnimationCoroutine = StartCoroutine(AnimateEntity(displayImage, entitySprites));
                     break;
                 
                 case EntitySO.ActionType.ChangeName:
@@ -129,11 +140,16 @@ namespace Player.UI.Interaction
                     break;
                 
                 case EntitySO.ActionType.KillPlayer:
-                    restartButton.gameObject.SetActive(true);
-                    leaveButton.gameObject.SetActive(false);
-                    KilledScreen.SetActive(true);
-                    dialogueText.text = actions.text;
-                    craftingBook.gameObject.SetActive(false);
+                    SoundManager.instance.PlaySound(SoundManager.Sound.incorrect, transform.position);
+                    StartCoroutine(KillPlayerCoroutine(actions.text));
+                    break;
+                
+                case EntitySO.ActionType.SayLine:
+                    if (writeCoroutine != null)
+                    {
+                        StopCoroutine(writeCoroutine);
+                    }
+                    writeCoroutine = StartCoroutine(WriteDialog(actions.text));
                     break;
                     
             }
@@ -148,6 +164,53 @@ namespace Player.UI.Interaction
         public void Restart()
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
+        private IEnumerator WriteDialog(string text)
+        {
+            string[] parts = text.Split('/');
+            if (parts.Length > 1)
+            {
+
+                for (int i = 0; i < parts.Length; i += 2)
+                {
+                    if (parts[i].Equals("$"))
+                    {
+                        dialogSource.text = currentEntity.entityName;
+                    }
+                    else
+                    {
+                        dialogSource.text = parts[i];
+                    }
+
+                    string line = "";
+                    for (int j = 0; j < parts[i + 1].Length; j++)
+                    {
+                        if (j % 2 == 0)
+                        {
+                            SoundManager.instance.PlaySound(SoundManager.Sound.speech, transform.position);
+                        }
+                        line += parts[i + 1][j];
+                        dialogueText.text = line;
+                        yield return new WaitForSeconds(0.07f);
+                    }
+
+                    yield return new WaitForSeconds(3f);
+                }
+            }
+            dialogSource.text = "";
+            dialogueText.text = "";
+        }
+
+        private IEnumerator KillPlayerCoroutine(string text)
+        {
+            StartCoroutine(AnimateEntity(playerImage, killedPlayerSprites));
+            yield return new WaitForSeconds(3f);
+            restartButton.gameObject.SetActive(true);
+            leaveButton.gameObject.SetActive(false);
+            KilledScreen.SetActive(true);
+            dialogueText.text = text;
+            craftingBook.gameObject.SetActive(false);
         }
     }
 }

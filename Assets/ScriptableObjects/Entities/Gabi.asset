@@ -15,6 +15,7 @@ MonoBehaviour:
   entityName: Gabi
   sprites:
   - {fileID: 21300000, guid: 3cddc895542900541907ae95b7c4a688, type: 3}
+  initialLine: you/Gabi what, what are you reaching for?/$/. . .
   itemActions:
   - itemSO: {fileID: 11400000, guid: 8a801fbe81d6f4e4db588597ee4908fa, type: 2}
     actions:
@@ -23,4 +24,10 @@ MonoBehaviour:
       - {fileID: 11400000, guid: 8c012ba2595a4734281ca37a4df07239, type: 2}
       parameter: 0
       text: 
-  categoryActions: []
+  categoryActions:
+  - itemCategory: 3
+    actions:
+    - actionType: 5
+      resource: []
+      parameter: 0
+      text: Gabi did you like Eren.

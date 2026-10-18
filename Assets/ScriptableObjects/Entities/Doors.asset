@@ -15,6 +15,7 @@ MonoBehaviour:
   entityName: Exit doors
   sprites:
   - {fileID: 5213229242370633579, guid: c051a18162afcee4dba1354ecb0f0d0d, type: 3}
+  initialLine: 
   itemActions:
   - itemSO: {fileID: 11400000, guid: 73d0d3c713e65d541b0d1d2665752bf8, type: 2}
     actions:
@@ -27,4 +28,9 @@ MonoBehaviour:
       - {fileID: -1437283734, guid: c051a18162afcee4dba1354ecb0f0d0d, type: 3}
       parameter: 0
       text: 
+    - actionType: 6
+      resource:
+      - {fileID: -1437283734, guid: c051a18162afcee4dba1354ecb0f0d0d, type: 3}
+      parameter: 0
+      text: you/finaly i can get out of here.
   categoryActions: []

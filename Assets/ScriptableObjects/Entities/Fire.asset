@@ -16,6 +16,7 @@ MonoBehaviour:
   sprites:
   - {fileID: 1098286324429101383, guid: 9e9b192b90589034badefaaba88eb4a5, type: 3}
   - {fileID: -2064776472, guid: 9e9b192b90589034badefaaba88eb4a5, type: 3}
+  initialLine: 
   itemActions:
   - itemSO: {fileID: 11400000, guid: 863fb8a1987fb0c4b86c4c529f4240f0, type: 2}
     actions:

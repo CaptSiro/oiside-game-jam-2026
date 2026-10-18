@@ -55,7 +55,6 @@ namespace System
 
         public void OnEndDrag(PointerEventData eventData)
         {
-            Debug.Log("on end");
             if (draggedItem == null)
             {
                 return;

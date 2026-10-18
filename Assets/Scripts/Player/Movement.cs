@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Player
@@ -16,6 +18,11 @@ namespace Player
         [SerializeField] private PlayerInput input;
         [SerializeField] private Animator animator;
 
+        private void Awake()
+        {
+            StartCoroutine(PlayFootstep());
+        }
+
         public void Update()
         {
             rb.linearVelocity = input.moveInput * speed;
@@ -29,5 +36,19 @@ namespace Player
                 animator.SetBool(WalkingUp, input.moveInput.y > 0);
             }
         }
+
+        private IEnumerator PlayFootstep()
+        {
+            while (gameObject.activeSelf)
+            {
+                if (input.moveInput != Vector2.zero)
+                {
+                    SoundManager.instance.PlaySound(SoundManager.Sound.footstep, transform.position);
+                }
+
+                yield return new WaitForSeconds(0.25f);
+            }
+        }
+        
     }
 }

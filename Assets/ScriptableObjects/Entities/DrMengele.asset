@@ -15,6 +15,7 @@ MonoBehaviour:
   entityName: Dr. Mengele
   sprites:
   - {fileID: -192188599730103900, guid: a052f87307aad6d428536bf0b6d88b32, type: 3}
+  initialLine: you/Doctor is, is that you?/$/. . .
   itemActions:
   - itemSO: {fileID: 11400000, guid: 4a2a557b52461564d8a08091e0310b6b, type: 2}
     actions:
@@ -22,6 +23,11 @@ MonoBehaviour:
       resource: []
       parameter: 0
       text: Now he sees who you really are.
+    - actionType: 1
+      resource:
+      - {fileID: -3304227480795285332, guid: a052f87307aad6d428536bf0b6d88b32, type: 3}
+      parameter: 0
+      text: 
   - itemSO: {fileID: 11400000, guid: 863fb8a1987fb0c4b86c4c529f4240f0, type: 2}
     actions:
     - actionType: 1

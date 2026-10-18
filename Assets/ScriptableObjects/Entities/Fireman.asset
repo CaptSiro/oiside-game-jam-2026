@@ -16,6 +16,7 @@ MonoBehaviour:
   sprites:
   - {fileID: 4177165091594156555, guid: bf113662d9251304bb5012f545fcf0d5, type: 3}
   - {fileID: -7691673812401212505, guid: bf113662d9251304bb5012f545fcf0d5, type: 3}
+  initialLine: you/Are you okay, i will help you right away./$/. . .
   itemActions: []
   categoryActions:
   - itemCategory: 1
@@ -30,6 +31,10 @@ MonoBehaviour:
       - {fileID: 7091566475817151718, guid: bf113662d9251304bb5012f545fcf0d5, type: 3}
       parameter: 0
       text: 
+    - actionType: 6
+      resource: []
+      parameter: 0
+      text: $/T-t-thank . . . y-you . . .
   - itemCategory: 3
     actions:
     - actionType: 5
