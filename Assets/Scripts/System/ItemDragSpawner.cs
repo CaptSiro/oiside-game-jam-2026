@@ -6,6 +6,9 @@ using UnityEngine.Serialization;
 
 namespace System
 {
+    /// <summary>
+    /// The source of dragged items and the script that updates their position.
+    /// </summary>
     public class ItemDragSpawner : MonoBehaviour,  IBeginDragHandler, IDragHandler, IEndDragHandler
     {
         [SerializeField] private DraggedItem itemPrefab;

@@ -8,6 +8,9 @@ using UnityEngine;
 
 namespace Player
 {
+    /// <summary>
+    /// Detects interactable object via colliders and triggers. After object is activated handles the interaction based on object type.
+    /// </summary>
     public class Interactions : MonoBehaviour
     {
         [SerializeField] private GameObject interactionKeyBind;
@@ -23,25 +26,25 @@ namespace Player
         
         public void OnCollisionEnter2D(Collision2D other)
         {
-            AddInteractable(other.gameObject);
+            NewCollision(other.gameObject);
         }
 
         public void OnCollisionExit2D(Collision2D other)
         {
-            RemoveInteractable(other.gameObject);
+            CollisionEnded(other.gameObject);
         }
 
         public void OnTriggerEnter2D(Collider2D other)
         {
-            AddInteractable(other.gameObject);
+            NewCollision(other.gameObject);
         }
 
         public void OnTriggerExit2D(Collider2D other)
         {
-            RemoveInteractable(other.gameObject);
+            CollisionEnded(other.gameObject);
         }
 
-        private void AddInteractable(GameObject interactable)
+        private void NewCollision(GameObject interactable)
         {
             if (interactable.layer == LayerMask.NameToLayer("Interactable"))
             {
@@ -63,7 +66,7 @@ namespace Player
             }
         }
 
-        private void RemoveInteractable(GameObject interactable)
+        private void CollisionEnded(GameObject interactable)
         {
             if (interactionObject != null && interactable == interactionObject.gameObject)
             {
@@ -120,6 +123,7 @@ namespace Player
             InteractionWindow intWin = (InteractionWindow)uiController.OpenWindow(1);
             intWin.SetEntity(((EntityInteraction)interactionObject).Entity, (EntityInteraction)interactionObject);
             intWin.SetToClue();
+            Destroy(interactionObject.gameObject);
         }
     }
     

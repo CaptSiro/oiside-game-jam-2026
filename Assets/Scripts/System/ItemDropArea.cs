@@ -6,6 +6,9 @@ using UnityEngine.EventSystems;
 
 namespace System
 {
+    /// <summary>
+    /// Defines where dragged items can be dropped and what happens when they are.
+    /// </summary>
     public class ItemDropArea : MonoBehaviour, IDropHandler
     {
         [SerializeField] private UnityEvent<ItemSO> onItemDrop;

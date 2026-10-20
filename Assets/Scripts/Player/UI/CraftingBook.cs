@@ -8,6 +8,9 @@ using UnityEngine.EventSystems;
 
 namespace Player.UI
 {
+    /// <summary>
+    /// Logic behind the Crafting book UIwindow. Handles crafting of items and creation of new item buttons when an item is unlocked.
+    /// </summary>
     public class CraftingBook : UIWindow
     {
         [SerializeField] private Crafting crafting;

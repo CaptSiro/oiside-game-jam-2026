@@ -6,6 +6,9 @@ using UnityEngine;
 
 namespace Environment.Interactable
 {
+    /// <summary>
+    /// Logic for entity object in the scene.
+    /// </summary>
     public class EntityInteraction : Interactable
     {
         [SerializeField] private EntitySO entity;

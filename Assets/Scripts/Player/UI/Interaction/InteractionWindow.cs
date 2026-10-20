@@ -11,6 +11,9 @@ using UnityEngine.UI;
 
 namespace Player.UI.Interaction
 {
+    /// <summary>
+    /// Logic behind window for interacting with entities. Handles item usage and changes to entity inside and outside the window.
+    /// </summary>
     public class InteractionWindow : UIWindow
     {
         [SerializeField] private CraftingBook craftingBook;
@@ -105,7 +108,7 @@ namespace Player.UI.Interaction
                 case EntitySO.ActionType.Destroy:
                     Destroy(currentEntityReference.gameObject);
                     entityNameText.text = "";
-                    StartCoroutine(DelayClose());
+                    uIController.CloseWindow(1);
                     break;
                 
                 case EntitySO.ActionType.UnlockNewItem:
@@ -155,17 +158,14 @@ namespace Player.UI.Interaction
             }
         }
 
-        private IEnumerator DelayClose()
-        {
-            yield return null;
-            uIController.CloseWindow(1);
-        }
-
         public void Restart()
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
+        /// <summary>
+        /// Writes the dialog based on the action text property. The format is: *name of object speaking*/*the spoken line* -- repeated as many times as needed
+        /// </summary>
         private IEnumerator WriteDialog(string text)
         {
             string[] parts = text.Split('/');
@@ -202,6 +202,10 @@ namespace Player.UI.Interaction
             dialogueText.text = "";
         }
 
+        
+        /// <summary>
+        /// Acts ad a death animation to show for example sprite change before announcing player they died.
+        /// </summary>
         private IEnumerator KillPlayerCoroutine(string text)
         {
             StartCoroutine(AnimateEntity(playerImage, killedPlayerSprites));
