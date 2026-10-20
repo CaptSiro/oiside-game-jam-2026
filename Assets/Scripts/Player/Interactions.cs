@@ -11,19 +11,21 @@ namespace Player
     /// <summary>
     /// Detects interactable object via colliders and triggers. After object is activated handles the interaction based on object type.
     /// </summary>
-    public class Interactions : MonoBehaviour
+    public class Interactions : PlayerBaseClass
     {
         [SerializeField] private GameObject interactionKeyBind;
         
-        [Space(10)]
-        [Header("References")]
-        [SerializeField] private Crafting crafting;
-        [SerializeField] private UIController uiController;
-        
-        
+        private Crafting crafting;
+        private UIController uiController;
         private Interactable interactionObject;
         private bool hasBook = false;
-        
+
+        private void Awake()
+        {
+            crafting = playerRef.GetComponent<Crafting>();
+            uiController = playerRef.GetScript<UIController>();
+        }
+
         public void OnCollisionEnter2D(Collision2D other)
         {
             NewCollision(other.gameObject);

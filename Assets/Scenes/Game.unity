@@ -3965,6 +3965,7 @@ GameObject:
   - component: {fileID: 1155403265}
   - component: {fileID: 1155403263}
   - component: {fileID: 1155403262}
+  - component: {fileID: 1155403268}
   - component: {fileID: 1155403261}
   - component: {fileID: 1155403260}
   - component: {fileID: 1155403266}
@@ -3989,8 +3990,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  rb: {fileID: 1155403263}
-  input: {fileID: 1155403261}
   animator: {fileID: 757622298}
 --- !u!114 &1155403261
 MonoBehaviour:
@@ -4005,8 +4004,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveInput: {x: 0, y: 0}
-  interactions: {fileID: 1155403266}
-  uiController: {fileID: 100115262}
 --- !u!114 &1155403262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4188,8 +4185,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionKeyBind: {fileID: 876984057}
-  crafting: {fileID: 1155403267}
-  uiController: {fileID: 100115262}
 --- !u!114 &1155403267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4203,6 +4198,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UnlockedItems: []
+--- !u!114 &1155403268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1155403259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96e8f17880cc6714d8ff0742e730b154, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player.PlayerMainScript
+  scripts:
+  - {fileID: 1155403261}
+  - {fileID: 1155403260}
+  - {fileID: 1155403266}
+  - {fileID: 1155403267}
+  - {fileID: 100115262}
+  rb: {fileID: 1155403263}
 --- !u!1001 &1161311206
 PrefabInstance:
   m_ObjectHideFlags: 0

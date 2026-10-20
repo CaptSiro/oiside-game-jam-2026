@@ -6,7 +6,7 @@ namespace Player.UI
     /// <summary>
     /// Handles opening and closing of UIwindow type objects and holds references so that individual scripts don't have to. Also hold references to non window parts of UI.
     /// </summary>
-    public class UIController : MonoBehaviour
+    public class UIController : PlayerBaseClass
     {
         
         [SerializeField] private UIWindow[] UIWindows;
