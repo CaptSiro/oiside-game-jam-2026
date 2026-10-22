@@ -35,12 +35,14 @@ namespace Player.UI.Interaction
         public override void ToggleWindow()
         {
             craftingBook.gameObject.SetActive(true);
+            playerImage.gameObject.SetActive(true);
             craftingBook.UpdateUI();
             base.ToggleWindow();
         }
 
         public void SetToClue()
         {
+            playerImage.gameObject.SetActive(false);
             craftingBook.gameObject.SetActive(false);
         }
 

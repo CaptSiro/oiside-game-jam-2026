@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using ScriptableObjects;
 using TMPro;
 using UnityEngine;
@@ -40,10 +41,21 @@ namespace Player.UI
             List<ItemSO> UnlockedItems = crafting.GetUnlockedItems();
             for (int i = lastShowAmount; i < UnlockedItems.Count; i++)
             {
+                int childIndex = itemButtons.Count();
+                for (int j = 0; j < itemButtons.Count(); j++)
+                {
+                    if (String.Compare(itemButtons[j].GetItem().itemType.ToString(),
+                            UnlockedItems[i].itemType.ToString(), StringComparison.Ordinal) > 0)
+                    {
+                        childIndex = j;
+                        break;
+                    }
+                }
                 ItemButton itemButton = Instantiate(itemButtonPrefab, itemHolder);
                 itemButton.SetItem(UnlockedItems[i]);
                 itemButton.GetComponent<ItemDragSpawner>().SetDragLayer(dragLayer);
-                itemButtons.Add(itemButton);
+                itemButtons.Insert(childIndex, itemButton);
+                itemButton.transform.SetSiblingIndex(childIndex);
             }
             lastShowAmount = UnlockedItems.Count;
             SelectPage(0);

@@ -18,5 +18,10 @@ namespace Player.UI
             text.text = heldItem.itemType.ToDisplayString();
             dragSpawner.SetItem(item);
         }
+
+        public ItemSO GetItem()
+        {
+            return heldItem;
+        }
     }
 }
