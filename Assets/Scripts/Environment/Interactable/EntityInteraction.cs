@@ -1,7 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Environment.EntityCombat;
+using Player;
 using ScriptableObjects;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Environment.Interactable
@@ -56,6 +59,12 @@ namespace Environment.Interactable
         public void TurnOffCollider()
         {
             collider.enabled = false;
+        }
+
+        public void StartCombat(PlayerMainScript playerRef)
+        {
+            EntityCombatScript ECS = transform.AddComponent<EntityCombatScript>();
+            ECS.StartCombat(entity, playerRef);
         }
     }
 }

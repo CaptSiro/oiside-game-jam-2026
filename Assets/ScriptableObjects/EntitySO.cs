@@ -1,4 +1,5 @@
 using System;
+using ScriptableObjects.EntityProjectiles;
 using UnityEngine;
 using UnityEngine.Events;
 using Object = UnityEngine.Object;
@@ -15,8 +16,15 @@ namespace ScriptableObjects
             UnlockNewItem,
             ChangeName,
             TurnOffCollider,
-            KillPlayer,
+            StartCombat,
             SayLine,
+        }
+
+        public enum CombatType
+        {
+            None,
+            BulletHell,
+            Charging
         }
 
         /// <summary>
@@ -29,6 +37,31 @@ namespace ScriptableObjects
             public Object[] resource;
             public int parameter;
             public string text;
+        }
+
+        [Serializable]
+        public class BulletHellDefinition
+        {
+            public ProjectileAttack[] projectileAttacks;
+            public float attackDelay;
+        }
+        
+        public enum ShootingType
+        {
+            none,
+            directed,
+            around,
+            circleSequence,
+        }
+
+        [Serializable]
+        public class ProjectileAttack
+        {
+            public ProjectileSO bullet;
+
+            public ShootingType type;
+
+            public int amount;
         }
         
         [Serializable]
@@ -54,5 +87,10 @@ namespace ScriptableObjects
         [Header("Actions")]
         public ItemActions[] itemActions;
         public CategoryActions[] categoryActions;
+
+        [Space(10)]
+        [Header("Combat")]
+        public CombatType combatType;
+        public BulletHellDefinition bulletHellDefinition;
     }
 }

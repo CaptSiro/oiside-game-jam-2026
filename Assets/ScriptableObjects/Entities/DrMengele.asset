@@ -22,7 +22,7 @@ MonoBehaviour:
     - actionType: 5
       resource: []
       parameter: 0
-      text: Now he sees who you really are.
+      text: $/Now I see who you really are.
     - actionType: 1
       resource:
       - {fileID: -3304227480795285332, guid: a052f87307aad6d428536bf0b6d88b32, type: 3}
@@ -47,3 +47,10 @@ MonoBehaviour:
       resource: []
       parameter: 0
       text: 
+  combatType: 1
+  bulletHellDefinition:
+    projectileAttacks:
+    - bullet: {fileID: 11400000, guid: 963109c1fa1b72a46b8a8372598d0246, type: 2}
+      type: 1
+      amount: 10
+    attackDelay: 1

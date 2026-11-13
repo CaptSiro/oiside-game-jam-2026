@@ -29,6 +29,7 @@ MonoBehaviour:
   - {fileID: -6334474631638360358, guid: ed9ec7002ef400e4f8bf153b13c8c2b5, type: 3}
   - {fileID: -556360264089270386, guid: ed9ec7002ef400e4f8bf153b13c8c2b5, type: 3}
   - {fileID: -1273739156249392808, guid: ed9ec7002ef400e4f8bf153b13c8c2b5, type: 3}
+  initialLine: 
   itemActions:
   - itemSO: {fileID: 11400000, guid: d7d18787c750afe47b0a0a43f5da8292, type: 2}
     actions:
@@ -49,3 +50,7 @@ MonoBehaviour:
       resource: []
       parameter: 0
       text: Thou shalt not attack the computer.
+  combatType: 0
+  bulletHellDefinition:
+    projectileAttacks: []
+    attackDelay: 0

@@ -9,7 +9,13 @@ namespace Player.UI
         [SerializeField] private UnityEvent onOpen;
         [SerializeField] private UnityEvent onClose;
 
-        private bool isActive = false;
+        protected bool isActive = false;
+        protected UIController uiController;
+
+        public void SetController(UIController controller)
+        {
+            uiController = controller;
+        }
         
         public virtual void ToggleWindow()
         {

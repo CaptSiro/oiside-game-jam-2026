@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,6 +14,19 @@ namespace Player.UI
         [SerializeField] private GameObject endScreen, pauseScreen;
 
         private int currentWindow = -1;
+
+        public PlayerMainScript GetPlayerRef()
+        {
+            return playerRef;
+        }
+
+        private void Awake()
+        {
+            for (int i = 0; i < UIWindows.Length; i++)
+            {
+                UIWindows[i].SetController(this);
+            }
+        }
 
         public UIWindow OpenWindow(int windowType)
         {
