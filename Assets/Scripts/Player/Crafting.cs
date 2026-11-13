@@ -8,7 +8,7 @@ namespace Player
     /// <summary>
     /// Crafting logic attached to player. Loaded all items on startup and handles crafting results.
     /// </summary>
-    public class Crafting : MonoBehaviour
+    public class Crafting : PlayerBaseClass
     {
         private Dictionary<string, ItemSO> craftingResultLookUp;
 

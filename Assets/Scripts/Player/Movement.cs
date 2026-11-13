@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Player
 {
-    public class Movement : MonoBehaviour
+    public class Movement : PlayerBaseClass
     {
         private static readonly int WalkingUp = Animator.StringToHash("walkingUp");
         private static readonly int Speed = Animator.StringToHash("Speed");
@@ -14,12 +14,16 @@ namespace Player
         
         [Space(10)]
         [Header("References")]
-        [SerializeField] private Rigidbody2D rb;
-        [SerializeField] private PlayerInput input;
         [SerializeField] private Animator animator;
 
+        
+        private PlayerInput input;
+        private Rigidbody2D rb;
+        
         private void Awake()
         {
+            rb = playerRef.GetComponent<Rigidbody2D>();
+            input = playerRef.GetScript<PlayerInput>();
             StartCoroutine(PlayFootstep());
         }
 
