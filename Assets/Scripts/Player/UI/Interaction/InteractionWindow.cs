@@ -223,7 +223,7 @@ namespace Player.UI.Interaction
             yield return WriteDialog(text);
             yield return new WaitForSeconds(1f);
             uIController.CloseWindow(1);
-            currentEntityReference.StartCombat();
+            currentEntityReference.StartCombat(uIController.GetPlayerRef());
         }
     }
 }

@@ -15,6 +15,11 @@ namespace Player.UI
 
         private int currentWindow = -1;
 
+        public PlayerMainScript GetPlayerRef()
+        {
+            return playerRef;
+        }
+
         private void Awake()
         {
             for (int i = 0; i < UIWindows.Length; i++)

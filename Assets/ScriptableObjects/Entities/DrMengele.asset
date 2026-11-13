@@ -22,7 +22,7 @@ MonoBehaviour:
     - actionType: 5
       resource: []
       parameter: 0
-      text: Now he sees who you really are.
+      text: $/Now I see who you really are.
     - actionType: 1
       resource:
       - {fileID: -3304227480795285332, guid: a052f87307aad6d428536bf0b6d88b32, type: 3}
