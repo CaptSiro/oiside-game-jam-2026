@@ -57,5 +57,10 @@ namespace Environment.Interactable
         {
             collider.enabled = false;
         }
+
+        public void StartCombat()
+        {
+            
+        }
     }
 }

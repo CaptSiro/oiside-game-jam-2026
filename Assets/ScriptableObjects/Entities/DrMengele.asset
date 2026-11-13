@@ -47,3 +47,10 @@ MonoBehaviour:
       resource: []
       parameter: 0
       text: 
+  combatType: 1
+  bulletHellDefinition:
+    projectileAttacks:
+    - bullet: {fileID: 11400000, guid: 963109c1fa1b72a46b8a8372598d0246, type: 2}
+      type: 1
+      amount: 10
+    attackDelay: 1

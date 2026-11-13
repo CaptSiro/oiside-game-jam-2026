@@ -144,9 +144,8 @@ namespace Player.UI.Interaction
                     currentEntityReference.TurnOffCollider();
                     break;
                 
-                case EntitySO.ActionType.KillPlayer:
-                    SoundManager.instance.PlaySound(SoundManager.Sound.incorrect, transform.position);
-                    StartCoroutine(KillPlayerCoroutine(actions.text));
+                case EntitySO.ActionType.StartCombat:
+                    StartCoroutine(StartCombatCoroutine(actions.text));
                     break;
                 
                 case EntitySO.ActionType.SayLine:
@@ -217,6 +216,14 @@ namespace Player.UI.Interaction
             KilledScreen.SetActive(true);
             dialogueText.text = text;
             craftingBook.gameObject.SetActive(false);
+        }
+
+        private IEnumerator StartCombatCoroutine(string text)
+        {
+            yield return WriteDialog(text);
+            yield return new WaitForSeconds(1f);
+            uIController.CloseWindow(1);
+            currentEntityReference.StartCombat();
         }
     }
 }
