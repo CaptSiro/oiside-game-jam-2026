@@ -57,7 +57,7 @@ namespace ScriptableObjects
         [Serializable]
         public class ProjectileAttack
         {
-            public ProjectileSO bullet;
+            public ProjectileSO projectile;
 
             public ShootingType type;
 
@@ -91,6 +91,7 @@ namespace ScriptableObjects
         [Space(10)]
         [Header("Combat")]
         public CombatType combatType;
+        public float health;
         public BulletHellDefinition bulletHellDefinition;
     }
 }
