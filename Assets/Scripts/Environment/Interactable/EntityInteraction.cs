@@ -61,6 +61,11 @@ namespace Environment.Interactable
             collider.enabled = false;
         }
 
+        public void ColliderToTrigger()
+        {
+            collider.isTrigger = true;
+        }
+
         public void StartCombat(PlayerMainScript playerRef)
         {
             EntityCombatScript ECS = transform.AddComponent<EntityCombatScript>();

@@ -1,3 +1,4 @@
+using Player;
 using ScriptableObjects.EntityProjectiles;
 using UnityEngine;
 
@@ -10,10 +11,13 @@ namespace Environment.EntityCombat
         [SerializeField] private Rigidbody2D rigidbody2D;
         
         private ProjectileSO projectileSO;
+        private PlayerMainScript playerRef;
 
-        public void Setup(ProjectileSO proj)
+        public void Setup(ProjectileSO proj, PlayerMainScript player)
         {
-            this.projectileSO = proj;
+            projectileSO = proj;
+            playerRef = player;
+            
             spriteRenderer.sprite = proj.image;
             collider.size = spriteRenderer.sprite.bounds.size;
             rigidbody2D.linearVelocity = proj.speed * transform.up;
@@ -21,7 +25,6 @@ namespace Environment.EntityCombat
 
         public void OnCollisionEnter2D(Collision2D collision)
         {
-            Debug.Log(collision.gameObject.name);
             Destroy(gameObject);
         }
 }

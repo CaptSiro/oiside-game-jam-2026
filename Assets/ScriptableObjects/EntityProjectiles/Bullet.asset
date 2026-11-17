@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90adf5efe3cf56b4e878f9b401b4c4d7, type: 3}
   m_Name: Bullet
   m_EditorClassIdentifier: Assembly-CSharp::ScriptableObjects.EntityProjectiles.ProjectileSO
-  image: {fileID: 21300000, guid: 0bf707d051c53464585dc8c977b5e95a, type: 3}
+  image: {fileID: 8867596342735207655, guid: 0bf707d051c53464585dc8c977b5e95a, type: 3}
   damage: 10
-  speed: 10
+  speed: 5
   isGuided: 0

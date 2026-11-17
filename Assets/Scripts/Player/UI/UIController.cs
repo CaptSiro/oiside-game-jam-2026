@@ -1,4 +1,5 @@
 using System;
+using ScriptableObjects;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,6 +13,8 @@ namespace Player.UI
         
         [SerializeField] private UIWindow[] UIWindows;
         [SerializeField] private GameObject endScreen, pauseScreen;
+        
+        [SerializeField] private HealthBar healthBar;
 
         private int currentWindow = -1;
 
@@ -77,6 +80,16 @@ namespace Player.UI
         public void TogglePause()
         {
             pauseScreen.SetActive(!pauseScreen.activeSelf);
+        }
+
+        public void SetUpHealthBar(EntitySO entity)
+        {
+            healthBar.SetUpHealthBar(entity);
+        }
+
+        public void UpdateHealthBar(float delta)
+        {
+            healthBar.TakeDamage(delta);
         }
         
     }

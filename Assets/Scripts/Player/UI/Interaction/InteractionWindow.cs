@@ -27,6 +27,7 @@ namespace Player.UI.Interaction
         private EntitySO currentEntity;
         private EntityInteraction currentEntityReference;
         private Sprite[] entitySprites;
+        private bool acceptsItems = true;
 
         private int EntityAnimationIndex = 0;
 
@@ -78,6 +79,8 @@ namespace Player.UI.Interaction
 
         public void UseItem(ItemSO usedItem)
         {
+            if(!acceptsItems) return;
+            
             foreach (var t in currentEntity.itemActions)
             {
                 if (t.itemSO.itemType == usedItem.itemType)
@@ -145,6 +148,7 @@ namespace Player.UI.Interaction
                     break;
                 
                 case EntitySO.ActionType.StartCombat:
+                    acceptsItems = false;
                     StartCoroutine(StartCombatCoroutine(actions.text));
                     break;
                 
@@ -220,10 +224,15 @@ namespace Player.UI.Interaction
 
         private IEnumerator StartCombatCoroutine(string text)
         {
+            if (writeCoroutine != null)
+            {
+                StopCoroutine(writeCoroutine);
+            }
             yield return WriteDialog(text);
             yield return new WaitForSeconds(1f);
             uIController.CloseWindow(1);
             currentEntityReference.StartCombat(uIController.GetPlayerRef());
+            currentEntityReference.ColliderToTrigger();
         }
     }
 }
