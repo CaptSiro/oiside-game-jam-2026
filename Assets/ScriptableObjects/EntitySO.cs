@@ -1,4 +1,7 @@
 using System;
+using System.Collections;
+using Environment.EntityCombat;
+using Player;
 using ScriptableObjects.EntityProjectiles;
 using UnityEngine;
 using UnityEngine.Events;
@@ -20,16 +23,9 @@ namespace ScriptableObjects
             SayLine,
         }
 
-        public enum CombatType
-        {
-            None,
-            BulletHell,
-            Charging
-        }
-
         /// <summary>
         /// Defines interactions of entity with items. Uses Action type enum as what should happen and has fields for possible resources the action needs. Some action need none some need a picture and so on.
-         /// </summary>
+        /// </summary>
         [Serializable]
         public class Action
         {
@@ -40,12 +36,14 @@ namespace ScriptableObjects
         }
 
         [Serializable]
-        public class BulletHellDefinition
+        public class AttackDefinition
         {
-            public ProjectileAttack[] projectileAttacks;
             public float attackDelay;
+            public ProjectileAttack[] projectileAttacks;
+            public ChargeAttack[] chargeAttacks;
         }
-        
+
+
         public enum ShootingType
         {
             none,
@@ -55,13 +53,39 @@ namespace ScriptableObjects
         }
 
         [Serializable]
-        public class ProjectileAttack
+        public abstract class AttackBase
+        {
+            public abstract IEnumerator Execute(EntityCombatScript combatScript);
+        }
+
+        [Serializable]
+        public class ProjectileAttack : AttackBase
         {
             public ProjectileSO projectile;
 
             public ShootingType type;
 
             public int amount;
+            public override IEnumerator Execute(EntityCombatScript combatScript)
+            {
+                yield return combatScript.SpawnProjectileAttack(this);
+            }
+        }
+        
+        [Serializable]
+        public class ChargeAttack : AttackBase
+        {
+            public float speed;
+            public float damage;
+            
+            [Space(10)]
+            public int numberOfBounces = 0;
+            public float maxDistance = -1;
+            public bool isGuided;
+            public override IEnumerator Execute(EntityCombatScript combatScript)
+            {
+                yield return combatScript.StartChargeAttack(this);
+            }
         }
         
         [Serializable]
@@ -90,8 +114,8 @@ namespace ScriptableObjects
 
         [Space(10)]
         [Header("Combat")]
-        public CombatType combatType;
         public float health;
-        public BulletHellDefinition bulletHellDefinition;
+        public float delayBetweenAttacks;
+        [SerializeReference] public AttackBase[] attacks;
     }
 }
