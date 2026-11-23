@@ -19,6 +19,7 @@ namespace Environment.EntityCombat
         private Rigidbody2D rb2d;
         
         private bool isCharging = false;
+        private EntitySO.ChargeAttack currentChargeAttack;
 
 
         public void StartCombat(EntitySO e, PlayerMainScript player)
@@ -27,6 +28,7 @@ namespace Environment.EntityCombat
             entity = e;
             playerRef = player;
             playerRef.GetScript<UIController>().SetUpHealthBar(entity);
+            playerRef.GetScript<PlayerHealthBar>().ResetHealth();
             
             
             StartCoroutine(CombatCoroutine());
@@ -176,7 +178,7 @@ namespace Environment.EntityCombat
             }
             else
             {
-                //TODO deal damage to player
+                playerRef.GetScript<PlayerHealthBar>().TakeDamage(currentChargeAttack.damage);
             }
         }
 
