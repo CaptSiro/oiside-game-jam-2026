@@ -233,6 +233,7 @@ namespace Player.UI.Interaction
             uIController.CloseWindow(1);
             currentEntityReference.StartCombat(uIController.GetPlayerRef());
             currentEntityReference.ColliderToTrigger();
+            
         }
     }
 }

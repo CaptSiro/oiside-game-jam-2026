@@ -25,6 +25,11 @@ namespace Environment.EntityCombat
 
         public void OnCollisionEnter2D(Collision2D collision)
         {
+            if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+            {
+                playerRef.GetScript<PlayerHealthBar>().TakeDamage(projectileSO.damage);
+            }
+            
             Destroy(gameObject);
         }
 }

@@ -27,11 +27,26 @@ namespace Player.UI
             TakeDamage(0);
         }
 
+        public void SetUpHealthBar(float maxHealth)
+        {
+            float max = maxHealth;
+            if (max == 0)
+            {
+                max = 1f;
+                return;
+            }
+            
+            gameObject.SetActive(true);
+            maxhealth = max;
+            currentHealth = max;
+            TakeDamage(0);
+        }
+
         public void TakeDamage(float damage)
         {
             currentHealth = Mathf.Max(currentHealth - damage, 0);
             float positionX = -barFill.rect.width + (currentHealth / maxhealth) * barFill.rect.width;
-            barFill.pivot = new Vector2(positionX, 0);
+            barFill.anchoredPosition= new Vector2(positionX, 0);
         }
     }
 }

@@ -14,7 +14,7 @@ namespace Player.UI
         [SerializeField] private UIWindow[] UIWindows;
         [SerializeField] private GameObject endScreen, pauseScreen;
         
-        [SerializeField] private HealthBar healthBar;
+        [SerializeField] private HealthBar healthBar, playerHealthBar;
 
         private int currentWindow = -1;
 
@@ -87,9 +87,15 @@ namespace Player.UI
             healthBar.SetUpHealthBar(entity);
         }
 
-        public void UpdateHealthBar(float delta)
+        public void SetUpPlayerHealthBar(float maxHealth)
         {
-            healthBar.TakeDamage(delta);
+            playerHealthBar.SetUpHealthBar(maxHealth);
+        }
+
+        public void UpdateHealthBar(float delta, bool isPlayer)
+        {
+            if(isPlayer) playerHealthBar.TakeDamage(delta);
+            else healthBar.TakeDamage(delta);
         }
         
     }
